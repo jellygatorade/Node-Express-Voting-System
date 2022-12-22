@@ -1,0 +1,13 @@
+Tutorial following
+How to Build a Full Stack Voting App with JavaScript and Node.js
+https://www.youtube.com/watch?v=Y0IyRu5qHzU&t=668s
+
+See also:
+Web Dev Simplified - Learn Express JS In 35 Minutes
+https://www.youtube.com/watch?v=SccSCuHhOw0
+
+Server:
+/node-voting-system-tutorial/server> npm start
+
+Client:
+/node-voting-system-tutorial/client> live-server

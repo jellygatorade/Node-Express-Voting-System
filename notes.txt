@@ -11,3 +11,17 @@ Server:
 
 Client:
 /node-voting-system-tutorial/client> live-server
+
+---
+
+12/22
+For voting page
+- Build the voting form in a way that makes sense to me
+
+For authtest page
+- Make the results show in DOM after a successful login
+- Do something in the DOM on unsuccessful login
+
+For server
+- Make data processing output include for each choice - total current votes, current percentage...and in a separate key? total votes
+- Valid credentials are currently stored in index.js (if (!(username === "ben" && password === "my-favorite-password")) {}) - break the login validation into a separate function

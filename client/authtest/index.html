@@ -4,10 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Authentication Test </title>
+    <title>Authentication Test</title>
   </head>
+
   <body>
+    <form id="login-form">
+      <label for="uname"><b>Username</b></label>
+      <input
+        type="text"
+        placeholder="Enter Username"
+        name="username"
+        required
+      />
+
+      <label for="psw"><b>Password</b></label>
+      <input
+        type="password"
+        placeholder="Enter Password"
+        name="password"
+        required
+      />
+
+      <button id="submit-login-button" type="submit">Login</button>
+    </form>
+
     <div id="content-div"></div>
-    <script type="module" src="authtest.js"></script>
+
+    <script type="module" src="./script/script.js"></script>
   </body>
 </html>

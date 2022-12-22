@@ -2,8 +2,10 @@ const express = require("express");
 const fs = require("fs").promises; // read and write methods retrieved in the promise implementation
 const path = require("path");
 
+const { processVotesData } = require("./process-data");
+
 const app = express();
-const dataFile = path.join(__dirname, "data.json");
+const dataFile = path.join(__dirname, "data.json"); // equivalent to "./data.json"
 
 // Support POSTing form data with URL encoded
 //
@@ -12,11 +14,25 @@ const dataFile = path.join(__dirname, "data.json");
 // https://stackoverflow.com/questions/4007969/application-x-www-form-urlencoded-or-multipart-form-data
 app.use(express.urlencoded({ extended: true }));
 
-// Enable CORS
+// // Enable CORS
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", "*");
 //   next();
 // });
+
+/********************************************************
+ * Testing Authenticated Endpoint
+ * Following: https://benborgers.com/posts/express-password-protect
+ */
+
+// Enable CORS
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  res.setHeader("Access-Control-Allow-Headers", "authorization");
+
+  next();
+});
 
 // Response to GET request at the ./poll endpoint
 app.get("/poll", async (req, res) => {
@@ -24,22 +40,9 @@ app.get("/poll", async (req, res) => {
 
   let data = JSON.parse(await fs.readFile(dataFile, "utf-8"));
 
-  // Calculate total votes from the data.json vote tallies
-  //
-  // Object.values(data) returns an array of values
-  //
-  const totalVotes = Object.values(data).reduce((total, n) => (total += n), 0);
-
-  data = Object.entries(data).map(([label, votes]) => {
-    return {
-      label,
-      percentage: ((100 * votes) / totalVotes || 0).toFixed(0), // or zero prevent divide by zero errors, .toFixed(0) converts to whole number
-    };
-  });
+  data = processVotesData(data);
 
   res.json(data);
-
-  //console.log(totalVotes);
 });
 
 // Response to POST request at the ./poll endpoint
@@ -55,19 +58,7 @@ app.post("/poll", async (req, res) => {
   res.end();
 });
 
-/********************************************************
- * Testing Authenticated Endpoint
- * Following: https://benborgers.com/posts/express-password-protect
- */
-
-// Enable CORS
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "http://127.0.0.1:8080");
-  res.setHeader("Access-Control-Allow-Credentials", true);
-  res.setHeader("Access-Control-Allow-Headers", "authorization");
-
-  next();
-});
+//////////////////////////////////////////////////////////////////
 
 // Response to GET request at the ./poll endpoint
 app.get("/admin", async (req, res) => {
@@ -99,22 +90,9 @@ app.get("/admin", async (req, res) => {
 
   let data = JSON.parse(await fs.readFile(dataFile, "utf-8"));
 
-  // Calculate total votes from the data.json vote tallies
-  //
-  // Object.values(data) returns an array of values
-  //
-  const totalVotes = Object.values(data).reduce((total, n) => (total += n), 0);
-
-  data = Object.entries(data).map(([label, votes]) => {
-    return {
-      label,
-      percentage: ((100 * votes) / totalVotes || 0).toFixed(0), // or zero prevent divide by zero errors, .toFixed(0) converts to whole number
-    };
-  });
+  data = processVotesData(data);
 
   res.json(data);
-
-  //console.log(totalVotes);
 });
 
 app.listen(3000, () => console.log("server is running..."));

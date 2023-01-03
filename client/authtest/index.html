@@ -28,7 +28,15 @@
       <button id="submit-login-button" type="submit">Login</button>
     </form>
 
-    <div id="content-div"></div>
+    <div id="await-response-div" style="display: none">
+      <p id="waiting-for-response" style="display: none"
+        >Waiting for server...</p
+      >
+      <p id="login-success" style="display: none">Login success!</p>
+      <p id="login-failed" style="display: none">Login failed.</p>
+    </div>
+
+    <div id="authenticated-content-div" style="font-family: monospace"></div>
 
     <script type="module" src="./script/script.js"></script>
   </body>

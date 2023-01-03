@@ -12,6 +12,7 @@ class Poll {
     this._refresh();
   }
 
+  // internal method
   async _refresh() {
     // GET the existing data (data.json on server)
     const response = await fetch(this.endpoint);
@@ -25,7 +26,7 @@ class Poll {
     });
 
     // For each entry in the retrieved data (which is an array)
-    for (const option of data) {
+    for (const option of data.results) {
       const template = document.createElement("template");
       const fragment = template.content;
 
@@ -47,6 +48,7 @@ class Poll {
           .querySelector(".poll__option")
           .addEventListener("click", () => {
             // POST method
+            //// Needs error handling
             fetch(this.endpoint, {
               method: "post",
               body: `add=${option.label}`,

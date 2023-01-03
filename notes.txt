@@ -14,14 +14,29 @@ Client:
 
 ---
 
+authtest page
+
+credentials are controlled in index.js
+
+username "ben"
+password "pass-word"
+
+---
+
+1/3
+- See about doing these things below 
+- Then make a plan for CMS integration - how will CMS data become choices in the poll?
+- Add the node autorefresh to this project
+
 12/22
 For voting page
-- Build the voting form in a way that makes sense to me
-
-For authtest page
-- Make the results show in DOM after a successful login
-- Do something in the DOM on unsuccessful login
+- Rebuild the voting form in a way that makes any more sense to me?
 
 For server
-- Make data processing output include for each choice - total current votes, current percentage...and in a separate key? total votes
-- Valid credentials are currently stored in index.js (if (!(username === "ben" && password === "my-favorite-password")) {}) - break the login validation into a separate function
+- See if there is a more appropriate CORS implementation 
+    (https://medium.com/zero-equals-false/using-cors-in-express-cac7e29b005b, https://www.npmjs.com/package/cors, https://www.youtube.com/watch?v=PNtFSVU-YTI&t=258s)
+
+---
+
+Basic Node.js hosting tutorial
+https://medium.com/@pampas93/host-your-node-js-app-on-shared-hosting-go-beyond-localhost-73ab923e6691

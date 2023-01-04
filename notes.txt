@@ -6,9 +6,12 @@ See also:
 Web Dev Simplified - Learn Express JS In 35 Minutes
 https://www.youtube.com/watch?v=SccSCuHhOw0
 
-Server:
-With or without nodemon
+---
+
+Server (with nodemon):
 /node-voting-system-tutorial/server> npm run devStart
+
+Server (without nodemon):
 /node-voting-system-tutorial/server> npm start
 
 Client:
@@ -18,18 +21,26 @@ Client:
 
 authtest page
 
-credentials are controlled in index.js
+credentials are controlled in auth.js
 
 username "ben"
 password "pass-word"
 
 ---
 
+1/4
+Following this JAMstack course: https://www.youtube.com/watch?v=A_l0qrPUJds&t=9592s
+The jamstack way would be ->
+CMS content is published to REST API
+Static Site Generator (SSG) utilizes the API content in a page build
+Static page is pushed to CDN for hosting, pre-rendered by the SSG
+---> And in this case, static page contains the "click" listener to run the POST method on a separate express server
+
 For 1/4
 - clear my node vulnerabilities (npm audit) - and make sure my apps still work
-- make a data subdirectory and have nodemon ignore it, move data.json there
 - How does the server retrieve the choices from the CMS? It needs to keep an updated list stored in choices.json.
 - It would be possible to have the client app retrieve them and push them to the server on every access, but that doesn't seem ideal - the server should be trusted to have them
+- Make an html form snippet in HTML-CSS-Layout-Snippets
 
 1/3
 - Make a plan for CMS integration - how will CMS data become choices in the poll?
@@ -48,3 +59,10 @@ For server
 
 Basic Node.js hosting tutorial
 https://medium.com/@pampas93/host-your-node-js-app-on-shared-hosting-go-beyond-localhost-73ab923e6691
+
+
+---
+
+Artcoded
+Strapi crash course: build a full application with Strapi 4
+https://www.youtube.com/watch?v=HjhK0pzwlbU

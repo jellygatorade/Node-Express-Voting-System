@@ -12,7 +12,7 @@ const CLIENT_ORIGIN = "http://127.0.0.1:8080";
 
 const app = express();
 
-const dataFile = path.join(__dirname, "data.json"); // equivalent to "./data.json"
+const dataFile = path.join(__dirname, "data/data.json"); // equivalent to "./data/data.json"
 
 /*********************************
  * Setup Express middleware
@@ -65,7 +65,7 @@ app.post("/poll", async (req, res) => {
 
   data[req.body.add]++; // req.body represents the user's input (POST method passes a form object within the request body, body contains a query string created in the POST request options with add as a key)
 
-  console.log(req.body);
+  //console.log(req.body);
 
   await fs.writeFile(dataFile, JSON.stringify(data));
 

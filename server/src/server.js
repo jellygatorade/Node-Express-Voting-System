@@ -8,7 +8,8 @@ const { processVotesData } = require("./process-data");
 const { authenticate } = require("./auth");
 
 const SERVER_PORT = 3000;
-const CLIENT_ORIGIN = "http://127.0.0.1:8080";
+//const CLIENT_ORIGIN = "http://127.0.0.1:8080";
+const CLIENT_ORIGIN = "*";
 
 const app = express();
 

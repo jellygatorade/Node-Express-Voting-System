@@ -36,6 +36,8 @@ Static Site Generator (SSG) utilizes the API content in a page build
 Static page is pushed to CDN for hosting, pre-rendered by the SSG
 ---> And in this case, static page contains the "click" listener to run the POST method on a separate express server
 
+- Putting this on hold to see if I can learn Next.js to use as a static site generator /and/ Node.js+Express server for this project
+
 For 1/4
 - clear my node vulnerabilities (npm audit) - and make sure my apps still work
 - How does the server retrieve the choices from the CMS? It needs to keep an updated list stored in choices.json.
